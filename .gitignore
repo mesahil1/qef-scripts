@@ -8,4 +8,4 @@
 /*.bak
 /results
 *.vdi
-/.vagrant/
+*.vagrant/
