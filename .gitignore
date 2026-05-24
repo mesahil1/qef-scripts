@@ -1,0 +1,11 @@
+/labels
+/logs
+/kali/
+/snort/
+/suricata/
+/webserver/
+/*.txt
+/*.bak
+/results
+*.vdi
+/.vagrant/
