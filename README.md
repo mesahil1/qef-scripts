@@ -77,4 +77,3 @@ Quick start:
   python3 droprate.py <path_to_stats.log>
   ```
     This will extract packet and drop counts from the `stats.log` file and calculate the drop rate.
-- 
