@@ -1,27 +1,27 @@
 
 # Create a folder for results
-mkdir -p /qef-result/suricata/phase2/run-<Days>  ## For All the Datasets
+```mkdir -p /qef-result/suricata/phase2/run-<Days> ```
 
 ## Run CPU-Mem.log
-sar -u -r 5 > cpu_mem.log &
-SAR_PID=$! ### Running sar for the cpu utilization in background
-
+```sar -u -r 5 > cpu_mem.log &
+SAR_PID=$! 
+```
 # For Suricata, we will run it in single mode to process the pcap file and capture the CPU and Memory utilization using sar.
- /usr/bin/time -v sudo suricata \
+``` /usr/bin/time -v sudo suricata \
      -c /etc/suricata/suricata.yaml \
      -r ~/datasets/Friday-WorkingHours.pcap \
      -l . \
      -k none --runmode=single 2> timing.log
-
+```
 # Kill the SAR command 
 kill $SAR_PID
 
 # Phase 1: Run the match_v2.py script to match the alerts in the eve.json file with the labels in the CSV file and output the matched results to a new JSON file.
-python3 ~/match_v2.py \
+```python3 ~/match_v2.py \
   --eve ~/qef-results/suricata/phase2/run-Friday/eve.json \
   --label ~/datasets/labels/Friday-WorkingHours-Morning.pcap_ISCX.csv \
   --out  ~/qef-results/suricata/phase2/run-Friday/Friday_matched_v2.json
-
+```
 
 ## Phase 2: Parse the cpu_mem.log file to extract the CPU and Memory metrics.
 python3 parser.py ~/qef-results/suricata/phase2/cpu_mem.log
