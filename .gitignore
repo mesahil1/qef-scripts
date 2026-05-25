@@ -9,3 +9,8 @@
 /results
 *.vdi
 *.vagrant/
+/.py/
+
+# Ignore local scripts
+d2.py
+match_alerts_to_labels.py
