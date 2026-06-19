@@ -10,7 +10,7 @@
 *.vdi
 *.vagrant/
 /.py/
-
+/sensor/
 # Ignore local scripts
 d2.py
 match_alerts_to_labels.py

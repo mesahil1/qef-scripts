@@ -9,7 +9,7 @@ SAR_PID=$! ### Running sar for the cpu utilization in background
 # Run Suricata on pcap files
  /usr/bin/time -v sudo suricata \
      -c /etc/suricata/suricata.yaml \
-     -r ~/datasets/Friday-WorkingHours.pcap \
+     -r ~/pcap/Monday-WorkingHours.pcap \
      -l . \
      -k none --runmode=single 2> timing.log
 
@@ -18,9 +18,9 @@ kill $SAR_PID
 
 # use matched python script
 python3 ~/match_v2.py \
-  --eve ~/qef-results/suricata/phase2/run-Friday/eve.json \
-  --label ~/datasets/labels/Friday-WorkingHours-Morning.pcap_ISCX.csv \
-  --out  ~/qef-results/suricata/phase2/run-Friday/Friday_matched_v2.json
+  --eve ~/qef-results/suricata/phase2/run-Monday/eve.json \
+  --label ~/labels/Monday-WorkingHours.pcap_ISCX.csv \
+  --out  ~/qef-results/suricata/phase2/run-Monday/Monday_matched_v2.json
 
 ## Use Parser to get CPU and Memory Utilization
 python3 parser.py ~/qef-results/suricata/phase2/cpu_mem.log
